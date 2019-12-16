@@ -33,7 +33,7 @@ stage('Build and Test') {
     def customImage = docker.build("my-image:${env.BUILD_ID}","./CalcMvcWeb/")
 
     customImage.inside {
-        sh 'dotnet build aspnetapp.sln'
+        sh 'dotnet build CalcApp30WithTests.sln'
         sh 'dotnet test'
     }
 }
