@@ -14,7 +14,7 @@ stage('Checkout') {
     
 steps {
       script {
-    def customImage = docker.build("my-image:${env.BUILD_ID}","./aspnetapp/")
+    def customImage = docker.build("my-image:${env.BUILD_ID}","./CalcMvcWeb/")
 
     customImage.inside {
         checkout scm
@@ -30,7 +30,7 @@ steps {
 stage('Build and Test') {
   steps {
     script {
-    def customImage = docker.build("my-image:${env.BUILD_ID}","./aspnetapp/")
+    def customImage = docker.build("my-image:${env.BUILD_ID}","./CalcMvcWeb/")
 
     customImage.inside {
         sh 'dotnet build aspnetapp.sln'
@@ -61,7 +61,7 @@ stage('Build and Test') {
   stage('Deploy') {
     steps {
       script {
-            def customImage = docker.build("my-image:${env.BUILD_ID}","./aspnetapp/")
+            def customImage = docker.build("my-image:${env.BUILD_ID}","./CalcMvcWeb/")
 
     customImage.inside {
                 withCredentials([azureServicePrincipal('azure_cred')]) {
