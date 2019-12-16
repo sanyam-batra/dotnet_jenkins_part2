@@ -8,6 +8,7 @@ RUN dotnet restore
 
 # copy everything else and build app
 COPY CalcMvcWeb/. ./CalcMvcWeb/
+COPY test/CalcMvcWeb.Tests/. ./CalcMvcWeb/
 WORKDIR /app/CalcMvcWeb
 RUN dotnet publish -c Release -o out
 
