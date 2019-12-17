@@ -4,12 +4,10 @@ WORKDIR /app
 # copy csproj and restore as distinct layers
 COPY *.sln .
 COPY CalcMvcWeb/*.csproj ./CalcMvcWeb/
-COPY test/CalcMvcWeb.Tests/*.csproj ./CalcMvcWeb/
 RUN dotnet restore
 
 # copy everything else and build app
 COPY CalcMvcWeb/. ./CalcMvcWeb/
-COPY test/CalcMvcWeb.Tests/. ./CalcMvcWeb/
 WORKDIR /app/CalcMvcWeb
 RUN dotnet publish -c Release -o out
 
